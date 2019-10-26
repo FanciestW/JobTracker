@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -13,15 +12,15 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
+        <AppBar position="static" className="app-bar">
+          <Toolbar className="nav-toolbar">
+            <IconButton edge="start" className="menu-button" color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" >
               News
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button className="right" color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
       </div>
