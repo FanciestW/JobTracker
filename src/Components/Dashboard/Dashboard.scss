@@ -1,7 +1,9 @@
 .dashboard {
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 922px;
+  height: calc(100vh - 64px);
   @media (max-width: 930px) {
     width: 100%;
   }
