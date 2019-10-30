@@ -8,7 +8,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Grid container direction="column" spacing={2} style={{height: '100%', width: '100%', margin: '0'}}>
-          <h1>Dashboard</h1>
+          <h1>Upcoming Interviews</h1>
           <Grid item>
             <Paper>
               <List>
@@ -27,6 +27,7 @@ class Dashboard extends Component {
               </List>
             </Paper>
           </Grid>
+          <h1>Interested Jobs</h1>
           <Grid item>
             <Paper>
               <List>

@@ -18,7 +18,7 @@ class Navbar extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" >
-              News
+              Dashboard
             </Typography>
             <Button className="right" color="inherit">Login</Button>
           </Toolbar>
