@@ -3,19 +3,32 @@ import { Fab, Paper, Grid, List, ListItem, Divider } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import JobApplicationListItem from '../JobApplicationListItem/JobApplicationListItem';
 import './Dashboard.scss';
+import InterviewListItem from '../InterviewListItem/InterviewListItem';
 
 class Dashboard extends Component {
   render() {
     const jobs = [
       {
-        jobTitle: 'Software Engineer Intern',
-        jobCompany: 'Microsoft',
-        jobStatus: 'Applied',
+        title: 'Software Engineer Intern',
+        company: 'Microsoft',
+        status: 'Applied',
       },
       {
-        jobTitle: 'Software Engineer New Grad',
-        jobCompany: 'Facebook',
-        jobStatus: 'Interviewing',
+        title: 'Software Engineer New Grad',
+        company: 'Facebook',
+        status: 'Interviewing',
+      }
+    ];
+    const interviews = [
+      {
+        title: '',
+        company: 'Facebook',
+        date: '12-12-19',
+      },
+      {
+        title: 'Test',
+        company: 'Google',
+        date: new Date('1/10/2019'),
       }
     ];
     return (
@@ -25,10 +38,10 @@ class Dashboard extends Component {
           <Grid item>
             <Paper>
               <List>
-                {jobs.map((jobObj, index) => (
+                {jobs.map((job, index) => (
                   <div key={index}>
                     <ListItem>
-                      <JobApplicationListItem jobTitle={jobObj.jobTitle} jobCompany={jobObj.jobCompany} jobStatus={jobObj.jobStatus} />
+                      <JobApplicationListItem title={job.title} company={job.company} status={job.status} />
                     </ListItem>
                     {index + 1 < jobs.length ? <Divider /> : null}
                   </div>
@@ -40,18 +53,13 @@ class Dashboard extends Component {
           <Grid item>
             <Paper>
               <List>
-                <ListItem>
-                  Test1
-                </ListItem>
-                <ListItem>
-                  Test2
-                </ListItem>
-                <ListItem>
-                  Test3
-                </ListItem>
-                <ListItem>
-                  Test4
-                </ListItem>
+                {interviews.map((interview, index) => (
+                  <div key={index}>
+                    <ListItem>
+                      <InterviewListItem title={interview.title} company={interview.company} date={interview.date} />
+                    </ListItem>
+                  </div>
+                ))}
               </List>
             </Paper>
           </Grid>
