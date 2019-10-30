@@ -9,8 +9,8 @@ class JobApplicationListItem extends Component {
 
   render() {
     return (
-      <Grid container direction="row" justify={this.props.justify} alignItems="center">
-        <Grid item xs={1} alignItems="center">
+      <Grid container direction="row" alignItems="center">
+        <Grid item xs={1}>
           <Checkbox style={{padding: '9px 0'}} inputProps={{'aria-label': 'checkbox'}} />
         </Grid>
         <Grid item xs={6}>
@@ -31,11 +31,9 @@ JobApplicationListItem.propTypes = {
   jobTitle: PropTypes.string.isRequired,
   jobCompany: PropTypes.string.isRequired,
   jobStatus: PropTypes.string.isRequired,
-  justify: PropTypes.string,
 };
 
 JobApplicationListItem.defaultProps = {
-  justify: 'left'
 };
 
 export default JobApplicationListItem;
