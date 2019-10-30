@@ -1,15 +1,16 @@
 import React from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import Navbar from '../Navbar/Navbar';
 import Dashboard from '../Dashboard/Dashboard';
 import './App.scss';
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
     type: 'dark',
   },
 });
+theme = responsiveFontSizes(theme);
 
 function App() {
   return (
