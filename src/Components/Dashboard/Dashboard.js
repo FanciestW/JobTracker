@@ -17,16 +17,21 @@ class Dashboard extends Component {
         title: 'Software Engineer New Grad',
         company: 'Facebook',
         status: 'Interviewing',
+      },
+      {
+        title: 'Software Engineer Intern',
+        company: 'Google',
+        status: 'Interviewing'
       }
     ];
     const interviews = [
       {
-        title: '',
+        title: 'Software Engineer New Grad',
         company: 'Facebook',
         date: '12-12-19',
       },
       {
-        title: 'Test',
+        title: 'Software Engineer Intern',
         company: 'Google',
         date: new Date('1/10/2019'),
       }

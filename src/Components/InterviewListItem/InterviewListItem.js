@@ -11,7 +11,7 @@ class InterviewListItem extends Component {
     return (
       <Grid container direction="row" alignItems="center" spacing={1}>
         <Grid item xs={1}>
-          <Checkbox style={{padding: '9px 0'}} inputProps={{'aria-label': 'checkbox'}} />
+          <Checkbox style={{padding: '4px'}} inputProps={{'aria-label': 'checkbox'}} />
         </Grid>
         <Grid item xs>
           <Typography variant="body1" noWrap>{this.props.company}</Typography>
