@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Fab, Paper, Grid, List, ListItem } from '@material-ui/core';
+import { Fab, Paper, Grid } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import JobApplicationList from '../JobApplicationList/JobApplicationList';
+import InterviewList from '../InterviewList/InterviewList';
 import './Dashboard.scss';
-import InterviewListItem from '../InterviewListItem/InterviewListItem';
 
 class Dashboard extends Component {
   render() {
@@ -42,23 +42,13 @@ class Dashboard extends Component {
           <h1>Recent Job Applications</h1>
           <Grid item>
             <Paper>
-              <List>
-                <JobApplicationList jobs={jobs} divided />
-              </List>
+              <JobApplicationList jobs={jobs} divided />
             </Paper>
           </Grid>
           <h1>Upcoming Interviews</h1>
           <Grid item>
             <Paper>
-              <List>
-                {interviews.map((interview, index) => (
-                  <div key={index}>
-                    <ListItem>
-                      <InterviewListItem title={interview.title} company={interview.company} date={interview.date} />
-                    </ListItem>
-                  </div>
-                ))}
-              </List>
+              <InterviewList interviews={interviews} divided />
             </Paper>
           </Grid>
         </Grid>
