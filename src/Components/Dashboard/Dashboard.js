@@ -39,15 +39,15 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Grid container direction="column" spacing={2} style={{ height: '100%', width: '100%', margin: '0' }}>
-          <h1>Recent Job Applications</h1>
-          <Grid item>
-            <Paper>
+          <Grid item xs>
+            <h1>Recent Job Applications</h1>
+            <Paper style={{height: '60%', overflow: 'scroll'}}>
               <JobApplicationList jobs={jobs} divided />
             </Paper>
           </Grid>
-          <h1>Upcoming Interviews</h1>
-          <Grid item>
-            <Paper>
+          <Grid item xs>
+            <h1>Upcoming Interviews</h1>
+            <Paper style={{height: '60%', overflow: 'scroll'}}>
               <InterviewList interviews={interviews} divided />
             </Paper>
           </Grid>
