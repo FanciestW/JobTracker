@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Fab, Paper, Grid, List, ListItem, Divider } from '@material-ui/core';
+import { Fab, Paper, Grid, List, ListItem } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import JobApplicationListItem from '../JobApplicationListItem/JobApplicationListItem';
+import JobApplicationList from '../JobApplicationList/JobApplicationList';
 import './Dashboard.scss';
 import InterviewListItem from '../InterviewListItem/InterviewListItem';
 
@@ -43,14 +43,7 @@ class Dashboard extends Component {
           <Grid item>
             <Paper>
               <List>
-                {jobs.map((job, index) => (
-                  <div key={index}>
-                    <ListItem>
-                      <JobApplicationListItem title={job.title} company={job.company} status={job.status} />
-                    </ListItem>
-                    {index + 1 < jobs.length ? <Divider /> : null}
-                  </div>
-                ))}
+                <JobApplicationList jobs={jobs} divided />
               </List>
             </Paper>
           </Grid>
