@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Fab, Paper, Grid } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import { Paper, Grid } from '@material-ui/core';
 import JobApplicationList from '../JobApplicationList/JobApplicationList';
 import InterviewList from '../InterviewList/InterviewList';
 import './Dashboard.scss';
@@ -52,9 +51,6 @@ class Dashboard extends Component {
             </Paper>
           </Grid>
         </Grid>
-        <Fab color="primary" aria-label="add" className="add-fab">
-          <AddIcon />
-        </Fab>
       </div>
     );
   }
