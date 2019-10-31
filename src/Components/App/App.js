@@ -1,6 +1,7 @@
 import React from 'react';
 import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
+import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Dashboard from '../Dashboard/Dashboard';
 import './App.scss';
@@ -19,7 +20,14 @@ function App() {
         <CssBaseline />
         <Navbar />
         <div className="app-content">
-          <Dashboard />
+          <Router>
+            <Switch>
+              <Route path="/dashboard" component={Dashboard} />
+              <Route>
+                <Redirect to={'/dashboard'} />
+              </Route>
+            </Switch>
+          </Router>
         </div>
       </MuiThemeProvider>
     </div>
