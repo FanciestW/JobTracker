@@ -40,13 +40,13 @@ class Dashboard extends Component {
         <Grid container direction="column" spacing={2} style={{ height: '100%', width: '100%', margin: '0' }}>
           <Grid item xs>
             <h1>Recent Job Applications</h1>
-            <Paper style={{height: '60%', overflow: 'scroll'}}>
+            <Paper style={{height: '60%', overflow: 'auto'}}>
               <JobApplicationList jobs={jobs} divided />
             </Paper>
           </Grid>
           <Grid item xs>
             <h1>Upcoming Interviews</h1>
-            <Paper style={{height: '60%', overflow: 'scroll'}}>
+            <Paper style={{height: '60%', overflow: 'auto'}}>
               <InterviewList interviews={interviews} divided />
             </Paper>
           </Grid>

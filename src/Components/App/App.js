@@ -18,17 +18,17 @@ function App() {
     <div className="App">
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <Navbar />
-        <div className="app-content">
-          <Router>
+        <Router>
+          <Navbar />
+          <div className="app-content">
             <Switch>
               <Route path="/dashboard" component={Dashboard} />
               <Route>
                 <Redirect to={'/dashboard'} />
               </Route>
             </Switch>
-          </Router>
-        </div>
+          </div>
+        </Router>
       </MuiThemeProvider>
     </div>
   );
