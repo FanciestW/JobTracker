@@ -3,6 +3,7 @@ import { AppBar, List, Toolbar, Typography, IconButton, ListItem, ListItemIcon, 
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddIcon from '@material-ui/icons/Add';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import SettingsIcon from '@material-ui/icons/Settings';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -37,6 +38,14 @@ class Navbar extends Component {
         onKeyDown={this.handleToggleDrawer}>
         <Router></Router>
         <List>
+          <Link to="/dashboard" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <ListItem button>
+              <ListItemIcon className="drawer-icon">
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary="Dashboard" />
+            </ListItem>
+          </Link>
           <Link to="/jobapps" style={{ color: 'inherit', textDecoration: 'none' }}>
             <ListItem button>
               <ListItemIcon className="drawer-icon">
