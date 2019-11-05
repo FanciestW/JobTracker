@@ -4,7 +4,7 @@ import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Dashboard from '../Dashboard/Dashboard';
-import PageNotFound from '../PageNotFound/PageNotFound';
+import ErrorPage from '../ErrorPage/ErrorPage';
 import './App.scss';
 
 let theme = createMuiTheme({
@@ -25,7 +25,7 @@ function App() {
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/" component={Dashboard} />
-              <Route component={PageNotFound} />
+              <Route component={ErrorPage} />
             </Switch>
           </div>
         </Router>
