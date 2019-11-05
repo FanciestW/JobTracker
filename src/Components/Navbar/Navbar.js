@@ -5,6 +5,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddIcon from '@material-ui/icons/Add';
 import SettingsIcon from '@material-ui/icons/Settings';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import PeopleIcon from '@material-ui/icons/People';
+import WorkIcon from '@material-ui/icons/Work';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import './Navbar.scss';
@@ -34,24 +37,38 @@ class Navbar extends Component {
         onKeyDown={this.handleToggleDrawer}>
         <Router></Router>
         <List>
-          <Link to="/test" style={{ color: 'inherit', textDecoration: 'none' }}>
+          <Link to="/jobapps" style={{ color: 'inherit', textDecoration: 'none' }}>
             <ListItem button>
               <ListItemIcon className="drawer-icon">
-                <SettingsIcon />
+                <AssignmentIcon />
               </ListItemIcon>
-              <ListItemText primary="Test" />
+              <ListItemText primary="Job Applications" />
             </ListItem>
           </Link>
-          {/* {titles.map((text, index) => (
-            <Link to={links[index]}
-              key={index}
-              style={{ color: 'white', textDecoration: 'none' }}>
-              <ListItem button className={'drawer-list-item'}>
-                <ListItemIcon className={'drawer-icon'}>{icons[index]}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            </Link>
-          ))} */}
+          <Link to="/interviews" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <ListItem button>
+              <ListItemIcon className="drawer-icon">
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Interviews" />
+            </ListItem>
+          </Link>
+          <Link to="/jobs" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <ListItem button>
+              <ListItemIcon className="drawer-icon">
+                <WorkIcon />
+              </ListItemIcon>
+              <ListItemText primary="Job Listings" />
+            </ListItem>
+          </Link>
+          <Link to="/profile" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <ListItem button>
+              <ListItemIcon className="drawer-icon">
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Profile" />
+            </ListItem>
+          </Link>
         </List>
       </div>
     );
