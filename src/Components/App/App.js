@@ -1,9 +1,10 @@
 import React from 'react';
 import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
-import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Dashboard from '../Dashboard/Dashboard';
+import PageNotFound from '../PageNotFound/PageNotFound';
 import './App.scss';
 
 let theme = createMuiTheme({
@@ -22,10 +23,9 @@ function App() {
           <Navbar />
           <div className="app-content">
             <Switch>
-              <Route path="/dashboard" component={Dashboard} />
-              <Route>
-                <Redirect to={'/dashboard'} />
-              </Route>
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/" component={Dashboard} />
+              <Route component={PageNotFound} />
             </Switch>
           </div>
         </Router>
