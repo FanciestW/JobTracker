@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -15,6 +15,7 @@ let theme = createMuiTheme({
 theme = responsiveFontSizes(theme);
 
 function App() {
+  const [ authed, setAuthed ] = useState(false);
   return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
