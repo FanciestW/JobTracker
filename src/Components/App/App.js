@@ -16,6 +16,7 @@ theme = responsiveFontSizes(theme);
 
 function App() {
   const [ authed, setAuthed ] = useState(false);
+
   return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
