@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
-import Dashboard from '../Dashboard/Dashboard';
+import PropTypes from 'prop-types';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import Login from '../SignInUp/Login/Login';
 import SignUp from '../SignInUp/SignUp/SignUp';
@@ -17,25 +16,18 @@ let theme = createMuiTheme({
 });
 theme = responsiveFontSizes(theme);
 
-const fakeAuth = {
-  isAuthenticated: true,
-  authenticate(cb) {
-    fakeAuth.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    fakeAuth.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, authed, ...rest }) => (
   <Route {...rest} render={(props) => (
-    fakeAuth.isAuthenticated === true
+    authed === true
       ? <Component {...props} />
       : <Redirect to='/login' />
   )} />
-)
+);
+
+PrivateRoute.propTypes = {
+  component: PropTypes.object,
+  authed: PropTypes.bool,
+};
 
 function App() {
   const [ authed, setAuthed ] = useState(false);
@@ -47,7 +39,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <PrivateRoute path="/dashboard" component={AuthedApp} />
+          <PrivateRoute path="/dashboard" authed={authed} component={AuthedApp} />
           <Route component={ErrorPage} />
         </Switch>
       </Router>
