@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Dashboard from '../Dashboard/Dashboard';
 import ErrorPage from '../ErrorPage/ErrorPage';
-import './AuthedRoute.scss';
+import './AuthedApp.scss';
 
-class AuthedRoute extends Component {
+class AuthedApp extends Component {
   render() {
     return (
       <div className='app'>
@@ -24,4 +24,4 @@ class AuthedRoute extends Component {
   }
 }
 
-export default AuthedRoute;
+export default AuthedApp;

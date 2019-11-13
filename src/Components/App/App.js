@@ -8,7 +8,7 @@ import ErrorPage from '../ErrorPage/ErrorPage';
 import Login from '../SignInUp/Login/Login';
 import SignUp from '../SignInUp/SignUp/SignUp';
 import './App.scss';
-import AuthedRoute from '../AuthedRoute/AuthedRoute';
+import AuthedApp from '../AuthedApp/AuthedApp';
 
 let theme = createMuiTheme({
   palette: {
@@ -47,7 +47,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <PrivateRoute path="/dashboard" component={AuthedRoute} />
+          <PrivateRoute path="/dashboard" component={AuthedApp} />
           <Route component={ErrorPage} />
         </Switch>
       </Router>
