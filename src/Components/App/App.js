@@ -40,7 +40,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <PrivateRoute path="/dashboard" authed={authed} component={AuthedApp} />
-          <Route component={ErrorPage} />
+          <Redirect to="/dashboard" />
         </Switch>
       </Router>
     </MuiThemeProvider>
