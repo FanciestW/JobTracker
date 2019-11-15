@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import { Paper } from '@material-ui/core';
+import EmailTextField from '../EmailTextField/EmailTextField';
+import '../SignInUp.scss';
 
 class Login extends Component {
   render() {
     return (
-      <h1>Login</h1>
+      <div className="auth-container">
+        <Paper className="login-form">
+          <h1 style={{textAlign: 'center'}}>Login</h1>
+          <EmailTextField />
+        </Paper>
+      </div>
     );
   }
 }
