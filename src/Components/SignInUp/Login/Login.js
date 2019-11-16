@@ -43,7 +43,6 @@ class Login extends Component {
             style={{ margin: '20px 0' }}>
             Login
           </Button>
-
           <Typography>
             <Box textAlign="center">
               Don&apos;t have an account? 

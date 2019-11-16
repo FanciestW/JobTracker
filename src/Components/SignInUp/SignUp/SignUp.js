@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, Button, Checkbox, FormControlLabel, Typography, Box } from '@material-ui/core';
+import { Paper, Button, Checkbox, FormControlLabel, Typography, Box, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import EmailTextField from '../EmailTextField/EmailTextField';
 import PasswordTextField from '../PasswordTextField/PasswordTextField';
@@ -11,6 +11,16 @@ class SignUp extends Component {
       <div className="auth-container">
         <Paper className="login-form">
           <h1>Sign Up</h1>
+          <TextField required autoFocus
+            fullWidth
+            label="First Name"
+            margin="normal"
+            variant="outlined" />
+          <TextField required
+            fullWidth
+            label="Last Name"
+            margin="normal"
+            variant="outlined" />
           <EmailTextField />
           <PasswordTextField />
           <PasswordTextField label="Confirm Password" />
