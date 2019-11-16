@@ -20,7 +20,7 @@ class Login extends Component {
     return (
       <div className="auth-container">
         <Paper className="login-form">
-          <h1 style={{ textAlign: 'center' }}>Login</h1>
+          <h1>Login</h1>
           <EmailTextField />
           <PasswordTextField />
           <Typography>
