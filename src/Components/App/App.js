@@ -3,7 +3,6 @@ import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ErrorPage from '../ErrorPage/ErrorPage';
 import Login from '../SignInUp/Login/Login';
 import SignUp from '../SignInUp/SignUp/SignUp';
 import './App.scss';
