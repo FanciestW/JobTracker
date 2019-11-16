@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, Button, Checkbox, Typography, Box } from '@material-ui/core';
+import { Paper, Button, Checkbox, FormControlLabel, Typography, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import EmailTextField from '../EmailTextField/EmailTextField';
 import PasswordTextField from '../PasswordTextField/PasswordTextField';
@@ -24,13 +24,17 @@ class Login extends Component {
           <EmailTextField />
           <PasswordTextField />
           <Typography>
-            <Box textAlign="left">
-              <Checkbox
-                checked={this.state.checkedRememberMe}
-                onChange={handleChange('checkedRememberMe')}
-                value="checkedRememberMe"
-                color="primary" />
-                Remember Me
+            <Box textAlign="left"
+              style={{}}>
+              <FormControlLabel
+                control={
+                  <Checkbox checked={this.state.checkedRememberMe}
+                    onChange={handleChange('checkedRememberMe')}
+                    color="primary"
+                    value="checkedRememberMe" />
+                }
+                label="Remember Me"
+              />
             </Box>
           </Typography>
           <Button className="login-button"
