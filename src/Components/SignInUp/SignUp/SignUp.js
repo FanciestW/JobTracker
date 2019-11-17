@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, Button, Checkbox, FormControlLabel, Typography, Box, TextField } from '@material-ui/core';
+import { Paper, Button, Typography, Box, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import EmailTextField from '../EmailTextField/EmailTextField';
 import PasswordTextField from '../PasswordTextField/PasswordTextField';
