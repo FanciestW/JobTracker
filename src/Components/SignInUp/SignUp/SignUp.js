@@ -6,6 +6,49 @@ import PasswordTextField from '../PasswordTextField/PasswordTextField';
 import '../SignInUp.scss';
 
 class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstNameValue: '',
+      firstNameValid: false,
+      lastNameValue: '',
+      lastNameValid: false,
+      emailValue: '',
+      emailValid: false,
+      passwordValue: '',
+      passwordValid: false,
+      passwordConfirmValue: '',
+      passwordConfirmValid: false,
+    };
+    this.handleFirstNameField = this.handleFirstNameField.bind(this);
+    this.handleLastNameField = this.handleLastNameField.bind(this);
+    this.handleEmailField = this.handleEmailField.bind(this);
+    this.handlePasswordField = this.handlePasswordField.bind(this);
+    this.handlePasswordConfirmField = this.handlePasswordConfirmField.bind(this);
+  }
+
+  handleFirstNameField(event) {
+    const value = event.target.value;
+    this.setState({ firstNameValue: value, firstNameValid: value.length > 0 });
+  }
+
+  handleLastNameField(event) {
+    const value = event.target.value;
+    this.setState({ lastNameValue: value, lastNameValid: value.length > 0 });
+  }
+
+  handleEmailField(value, isValid) {
+    this.setState({ emailValue: value, emailValid: isValid });
+  }
+
+  handlePasswordField(value, isValid) {
+    this.setState({ passwordValue: value, passwordValid: isValid });
+  }
+
+  handlePasswordConfirmField(value, isValid) {
+    this.setState({ passwordConfirmValue: value, passwordConfirmValid: isValid });
+  }
+
   render() {
     return (
       <div className="auth-container">
@@ -15,15 +58,25 @@ class SignUp extends Component {
             fullWidth
             label="First Name"
             margin="normal"
-            variant="outlined" />
+            variant="outlined"
+            onChange={this.handleFirstNameField} />
           <TextField required
             fullWidth
             label="Last Name"
             margin="normal"
-            variant="outlined" />
-          <EmailTextField />
-          <PasswordTextField />
-          <PasswordTextField label="Confirm Password" />
+            variant="outlined"
+            onChange={this.handleLastNameField} />
+          <EmailTextField 
+            onChange={this.handleEmailField}
+            showError />
+          <PasswordTextField 
+            onChange={this.handlePasswordField}
+            showError />
+          <PasswordTextField 
+            label="Confirm Password"
+            onChange={this.handlePasswordConfirmField}
+            match={this.state.passwordValue}
+            showError />
           <Button className="login-button"
             variant="contained"
             color="primary"
