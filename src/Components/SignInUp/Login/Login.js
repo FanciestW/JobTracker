@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Paper, Button, Checkbox, FormControlLabel, Typography, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 import EmailTextField from '../EmailTextField/EmailTextField';
 import PasswordTextField from '../PasswordTextField/PasswordTextField';
 import '../SignInUp.scss';
@@ -9,8 +10,33 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      emailValue: '',
+      emailValid: false,
+      passwordValue: '',
       checkedRememberMe: false,
     };
+    this.handleEmailField = this.handleEmailField.bind(this);
+    this.handlePasswordField = this.handlePasswordField.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleEmailField(value, isValid) {
+    this.setState({ emailValue: value, emailValid: isValid });
+  }
+
+  handlePasswordField(value) {
+    this.setState({ passwordValue: value });
+  }
+
+  async handleLogin() {
+    if (this.state.emailValid) {
+      const reqBody = {
+        email: this.state.emailValue,
+        password: this.state.passwordValue,
+      };
+      const response = await Axios.post('http://localhost:8080/api/user/login', reqBody);
+      console.log(response);
+    }
   }
 
   render() {
@@ -21,8 +47,11 @@ class Login extends Component {
       <div className="auth-container">
         <Paper className="login-form">
           <h1>Login</h1>
-          <EmailTextField />
-          <PasswordTextField />
+          <EmailTextField
+            showError
+            onChange={this.handleEmailField} />
+          <PasswordTextField 
+            onChange={this.handlePasswordField} />
           <Typography>
             <Box textAlign="left"
               style={{}}>
@@ -40,7 +69,8 @@ class Login extends Component {
           <Button className="login-button"
             variant="contained"
             color="primary"
-            style={{ margin: '20px 0' }}>
+            style={{ margin: '20px 0' }}
+            onClick={this.handleLogin}>
             Login
           </Button>
           <Typography>

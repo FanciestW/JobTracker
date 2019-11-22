@@ -36,8 +36,8 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route onAuthChange={setAuthed} exact path="/login" component={Login} />
+          <Route onAuthChange={setAuthed} exact path="/signup" component={SignUp} />
           <PrivateRoute path="/dashboard" authed={authed} component={AuthedApp} />
           <Redirect to="/dashboard" />
         </Switch>
