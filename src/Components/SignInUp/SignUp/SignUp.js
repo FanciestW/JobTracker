@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Paper, Button, Typography, Box, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 import EmailTextField from '../EmailTextField/EmailTextField';
 import PasswordTextField from '../PasswordTextField/PasswordTextField';
 import '../SignInUp.scss';
@@ -25,6 +26,7 @@ class SignUp extends Component {
     this.handleEmailField = this.handleEmailField.bind(this);
     this.handlePasswordField = this.handlePasswordField.bind(this);
     this.handlePasswordConfirmField = this.handlePasswordConfirmField.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   handleFirstNameField(event) {
@@ -47,6 +49,24 @@ class SignUp extends Component {
 
   handlePasswordConfirmField(value, isValid) {
     this.setState({ passwordConfirmValue: value, passwordConfirmValid: isValid });
+  }
+
+  async handleSignUp() {
+    if (!this.state.firstNameValid ||
+        !this.state.lastNameValid ||
+        !this.state.emailValid ||
+        !this.state.passwordValid ||
+        !this.state.passwordConfirmValid) {
+      return;
+    }
+    const reqBody = {
+      firstName: this.state.firstNameValue,
+      lastName: this.state.lastNameValue,
+      email: this.state.emailValue,
+      password: this.state.passwordValue,
+    };
+    const response = await Axios.post('http://localhost:8080/api/user/signup', reqBody);
+    console.log(response);
   }
 
   render() {
@@ -80,7 +100,8 @@ class SignUp extends Component {
           <Button className="login-button"
             variant="contained"
             color="primary"
-            style={{ margin: '20px 0' }}>
+            style={{ margin: '20px 0' }}
+            onClick={this.handleSignUp}>
             Sign Up
           </Button>
           <Typography>

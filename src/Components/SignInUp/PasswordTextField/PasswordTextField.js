@@ -15,15 +15,16 @@ class PasswordTextField extends Component {
   handleOnChange(event) {
     const password = event.target.value;
     const regex = new RegExp(this.props.regex);
+    let isValid;
     if (this.props.match) {
-      this.setState({ isValid: password === this.props.match });
+      isValid = password === this.props.match;
     } else {
-      this.setState({ isValid: !!password.match(regex) });
+      isValid = !!password.match(regex);
     }
+    this.setState({ value: password, isValid, });
     if (this.props.onChange) {
-      this.props.onChange(password, this.state.isValid);
+      this.props.onChange(password, isValid);
     }
-    this.setState({ value: password });
   }
 
   render() {

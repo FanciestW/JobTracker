@@ -15,11 +15,11 @@ class EmailTextField extends Component {
   handleOnChange(event) {
     const email = event.target.value;
     const regex = new RegExp(this.props.regex);
-    this.setState({ isValid: !!email.match(regex) });
+    const isValid = !!email.match(regex);
     if (this.props.onChange) {
-      this.props.onChange(email, this.state.isValid);
+      this.props.onChange(email, isValid);
     }
-    this.setState({ value: email });
+    this.setState({ value: email, isValid, });
   }
 
   render() {
