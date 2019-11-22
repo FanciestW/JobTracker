@@ -104,8 +104,8 @@ class SignUp extends Component {
             onClick={this.handleSignUp}>
             Sign Up
           </Button>
-          <Typography>
-            <Box textAlign="center">
+          <Typography component="div">
+            <Box textAlign="center" component="p">
               Already have an account?
               <Link to="/login" className="signup-link">
                 Go to login.
