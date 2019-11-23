@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Paper, Button, Checkbox, FormControlLabel, Typography, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Axios from 'axios';
 import EmailTextField from '../EmailTextField/EmailTextField';
 import PasswordTextField from '../PasswordTextField/PasswordTextField';
@@ -36,6 +37,9 @@ class Login extends Component {
       };
       const response = await Axios.post('http://localhost:8080/api/user/login', reqBody);
       console.log(response);
+      if (this.props.onAuthChange) {
+        this.props.onAuthChange(response.status === 200);
+      }
     }
   }
 
@@ -86,5 +90,9 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  onAuthChange: PropTypes.func
+};
 
 export default Login;

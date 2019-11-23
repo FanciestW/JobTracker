@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Paper, Button, Typography, Box, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
@@ -67,6 +68,9 @@ class SignUp extends Component {
     };
     const response = await Axios.post('http://localhost:8080/api/user/signup', reqBody);
     console.log(response);
+    if (this.props.onAuthChange) {
+      this.props.onAuthChange(response.status === 200);
+    }
   }
 
   render() {
@@ -117,5 +121,9 @@ class SignUp extends Component {
     );
   }
 }
+
+SignUp.propTypes = {
+  onAuthChange: PropTypes.func,
+};
 
 export default SignUp;
