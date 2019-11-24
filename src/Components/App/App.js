@@ -46,6 +46,9 @@ function App() {
           <Route exact path="/signup">
             <SignUp onAuthChange={setAuthed} />
           </Route>
+          <Route path="/">
+            <Redirect to={authed ? '/dashboard' : '/login'} />
+          </Route>
         </Switch>
       </Router>
     </MuiThemeProvider>
