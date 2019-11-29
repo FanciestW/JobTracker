@@ -36,7 +36,12 @@ class Login extends Component {
         password: this.state.passwordValue,
       };
       const response = await Axios.post('/api/user/login', reqBody);
-      console.log(response);
+      console.log(response); // FIXME:: Remove this console log.
+      if (response.status === 200) { 
+        localStorage.setItem('authed', 'true');
+      } else {
+        localStorage.setItem('authed', 'false');
+      }
       if (this.props.onAuthChange) {
         this.props.onAuthChange(response.status === 200);
       }

@@ -68,6 +68,11 @@ class SignUp extends Component {
     };
     const response = await Axios.post('/api/user/signup', reqBody);
     console.log(response);
+    if (response.status === 200) { 
+      localStorage.setItem('authed', true);
+    } else {
+      localStorage.setItem('authed', false);
+    }
     if (this.props.onAuthChange) {
       this.props.onAuthChange(response.status === 200);
     }

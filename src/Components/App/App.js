@@ -30,7 +30,7 @@ PrivateRoute.propTypes = {
 };
 
 function App() {
-  const [ authed, setAuthed ] = useState(false);
+  const [ authed, setAuthed ] = useState(localStorage.getItem('authed')==='true');
   const customHistory = createBrowserHistory();
 
   return (
