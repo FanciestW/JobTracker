@@ -35,7 +35,7 @@ class Login extends Component {
         email: this.state.emailValue,
         password: this.state.passwordValue,
       };
-      const response = await Axios.post('http://localhost:8080/api/user/login', reqBody);
+      const response = await Axios.post('/api/user/login', reqBody);
       console.log(response);
       if (this.props.onAuthChange) {
         this.props.onAuthChange(response.status === 200);
