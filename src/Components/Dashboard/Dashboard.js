@@ -13,19 +13,19 @@ class Dashboard extends Component {
       interviews: [],
     };
     this.reloadDashboardData = this.reloadDashboardData.bind(this);
-  }
-
-  componentWillMount() {
     this.reloadDashboardData();
   }
 
   async reloadDashboardData() {
     const applicationRes = await Axios.get('/api/application/all');
     const interviewRes = await Axios.get('/api/interview/all');
-    console.log(applicationRes);
-    console.log(interviewRes);
-    this.state.applications = applicationRes.data.jobApplications;
-    this.state.interviewRes = interviewRes.data.jobInterviews;
+    if(applicationRes.status === 401 || interviewRes.status === 401) {
+      localStorage.setItem('authed', false);
+    }
+    this.setState({
+      applications: applicationRes.data.jobApplications,
+      interviews: interviewRes.data.jobInterviews,
+    });
   }
 
   render() {
