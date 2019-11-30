@@ -16,16 +16,27 @@ class Dashboard extends Component {
     this.reloadDashboardData();
   }
 
+  componentnWillMount() {
+    this.reloadDashboardData();
+  }
+
   async reloadDashboardData() {
     const applicationRes = await Axios.get('/api/application/all');
     const interviewRes = await Axios.get('/api/interview/all');
-    if(applicationRes.status === 401 || interviewRes.status === 401) {
+    if (!interviewRes && !applicationRes) {
       localStorage.setItem('authed', false);
+      return;
     }
-    this.setState({
-      applications: applicationRes.data.jobApplications,
-      interviews: interviewRes.data.jobInterviews,
-    });
+    if (applicationRes && applicationRes.status === 200) {
+      this.setState({
+        applications: applicationRes.data.jobApplications,
+      });
+    }
+    if(interviewRes && interviewRes.status === 200) {
+      this.setState({
+        interviews: interviewRes.data.jobInterviews,
+      });
+    }
   }
 
   render() {
