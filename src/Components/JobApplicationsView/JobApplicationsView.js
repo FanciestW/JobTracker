@@ -1,16 +1,32 @@
 import React, { Component } from 'react';
 import { Grid, Paper } from '@material-ui/core';
+import Axios from 'axios';
 import JobApplicationList from '../JobApplicationList/JobApplicationList';
 
 class JobApplicationsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      applications: [
-        { title: 'Test', company: 'Test Company', },
-        { title: 'Test2', company: 'Test2 Company', },
-      ]
+      applications: [],
     };
+    this.loadJobApplications = this.loadJobApplications.bind(this);
+    this.loadJobApplications();
+  }
+
+  componentnWillMount() {
+    this.loadJobApplications();
+  }
+
+  async loadJobApplications() {
+    const res = await Axios.get('/api/application/all');
+    if (!res) {
+      localStorage.setItem('authed', false);
+      return;
+    } else if (res && res.status === 200) {
+      this.setState({
+        applications: res.data.jobApplications,
+      });
+    }
   }
 
   render() {
