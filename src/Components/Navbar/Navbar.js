@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { AppBar, List, Toolbar, Typography, IconButton, ListItem, ListItemIcon, ListItemText, SwipeableDrawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -81,6 +82,29 @@ class Navbar extends Component {
         </List>
       </div>
     );
+    let title = '';
+    switch(this.props.location.pathname) {
+      case '/dashboard': {
+        title = 'Dashboard';
+        break;
+      }
+      case '/jobapps': {
+        title = 'Job Applications';
+        break;
+      }
+      case '/interviews': {
+        title = 'Interviews';
+        break;
+      }
+      case '/jobs': {
+        title = 'Job Listings';
+        break;
+      }
+      case '/profile': {
+        title = 'Profile';
+        break;
+      }
+    }
     return (
       <div>
         <AppBar position="static" className="app-bar">
@@ -88,9 +112,7 @@ class Navbar extends Component {
             <IconButton edge="start" className="menu-button" onClick={this.handleToggleDrawer} color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" >
-              Dashboard
-            </Typography>
+            <Typography variant="h6" >{title}</Typography>
             <SwipeableDrawer open={this.state.open} onOpen={this.handleToggleDrawer} onClose={this.handleToggleDrawer} className={'side-drawer'}>
               {sideNav}
             </SwipeableDrawer>
@@ -114,5 +136,11 @@ class Navbar extends Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default withRouter(Navbar);
