@@ -13,7 +13,7 @@ class JobApplicationsView extends Component {
     this.loadJobApplications();
   }
 
-  componentnWillMount() {
+  componentDidMount() {
     this.loadJobApplications();
   }
 
