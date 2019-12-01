@@ -5,18 +5,10 @@ import Dashboard from '../Dashboard/Dashboard';
 import JobApplicationsView from '../JobApplicationsView/JobApplicationsView';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import './AuthedApp.scss';
-import Axios from 'axios';
 
 class AuthedApp extends Component {
   constructor(props) {
     super(props);
-    Axios.interceptors.response.use((res) => {
-      return res;
-    }, (err) => {
-      if (err.response.status === 401) {
-        localStorage.setItem('authed', false);
-      }
-    });
   }
 
   render() {

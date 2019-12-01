@@ -3,6 +3,7 @@ import { MuiThemeProvider, createMuiTheme, responsiveFontSizes } from '@material
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import Axios from 'axios';
 import PropTypes from 'prop-types';
 import Login from '../SignInUp/Login/Login';
 import SignUp from '../SignInUp/SignUp/SignUp';
@@ -32,6 +33,15 @@ PrivateRoute.propTypes = {
 function App() {
   const [ authed, setAuthed ] = useState(localStorage.getItem('authed')==='true');
   const customHistory = createBrowserHistory();
+
+  Axios.interceptors.response.use((res) => {
+    return res;
+  }, (err) => {
+    if (err.response.status === 401) {
+      localStorage.setItem('authed', false);
+      setAuthed(false);
+    }
+  });
 
   return (
     <MuiThemeProvider theme={theme}>
