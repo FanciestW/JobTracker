@@ -9,6 +9,7 @@ class JobApplicationsView extends Component {
     super(props);
     this.state = {
       applications: [],
+      dialogOpen: false,
     };
     this.loadJobApplications = this.loadJobApplications.bind(this);
   }

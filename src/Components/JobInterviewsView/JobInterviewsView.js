@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Fab, Grid, Paper } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import { Grid, Paper } from '@material-ui/core';
 import Axios from 'axios';
 import InterviewList from '../InterviewList/InterviewList';
+import NewInterviewDialog from '../NewInterviewDialog/NewInterviewDialog';
 
 class JobInterviewsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       interviews: [],
+      dialogOpen: false,
     };
     this.loadInterviews = this.loadInterviews.bind(this);
   }
@@ -30,14 +31,6 @@ class JobInterviewsView extends Component {
   }
 
   render() {
-    const fabStyle = {
-      margin: 0,
-      top: 'auto',
-      right: 20,
-      bottom: 20,
-      left: 'auto',
-      position: 'absolute',
-    };
     return (
       <div className="dashboard">
         <Grid container direction="column" spacing={2} style={{ height: '100%', width: '100%', margin: '0' }}>
@@ -45,9 +38,7 @@ class JobInterviewsView extends Component {
             <Paper style={{ height: '100%', overflow: 'auto' }}>
               <InterviewList interviews={this.state.interviews} divided />
             </Paper>
-            <Fab color="primary" aria-label="add" style={fabStyle}>
-              <AddIcon />
-            </Fab>
+            <NewInterviewDialog open={this.state.dialogOpen} onAdd={this.loadInterviews} />
           </Grid>
         </Grid>
       </div>
