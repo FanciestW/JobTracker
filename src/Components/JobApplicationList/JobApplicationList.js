@@ -14,7 +14,7 @@ class JobApplicationList extends Component {
       </div>
     ));
     return (
-      <List>
+      <List style={{ height: '100%' }}>
         {jobListItems}
       </List>
     );
