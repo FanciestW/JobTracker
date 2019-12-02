@@ -31,7 +31,7 @@ class JobApplicationsView extends Component {
   }
 
   render() {
-    const style = {
+    const fabStyle = {
       margin: 0,
       top: 'auto',
       right: 20,
@@ -46,7 +46,7 @@ class JobApplicationsView extends Component {
             <Paper style={{ height: '100%', overflow: 'auto' }}>
               <JobApplicationList jobs={this.state.applications} divided />
             </Paper>
-            <Fab color="primary" aria-label="add" style={style}>
+            <Fab color="primary" aria-label="add" style={fabStyle}>
               <AddIcon />
             </Fab>
           </Grid>
