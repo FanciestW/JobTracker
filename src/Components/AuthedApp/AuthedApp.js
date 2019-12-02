@@ -8,10 +8,6 @@ import ErrorPage from '../ErrorPage/ErrorPage';
 import './AuthedApp.scss';
 
 class AuthedApp extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className='app'>
