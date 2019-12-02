@@ -104,6 +104,10 @@ class Navbar extends Component {
         title = 'Profile';
         break;
       }
+      default: {
+        title = '';
+        break;
+      }
     }
     return (
       <div>

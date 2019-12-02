@@ -11,7 +11,6 @@ class JobApplicationsView extends Component {
       applications: [],
     };
     this.loadJobApplications = this.loadJobApplications.bind(this);
-    this.loadJobApplications();
   }
 
   componentDidMount() {
@@ -38,7 +37,7 @@ class JobApplicationsView extends Component {
             <Paper style={{ height: '100%', overflow: 'auto' }}>
               <JobApplicationList jobs={this.state.applications} divided />
             </Paper>
-            <NewApplicationDialog open={this.state.dialogOpen} />
+            <NewApplicationDialog open={this.state.dialogOpen} onAdd={this.loadJobApplications} />
           </Grid>
         </Grid>
       </div>

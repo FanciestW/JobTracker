@@ -11,7 +11,6 @@ class JobInterviewsView extends Component {
       interviews: [],
     };
     this.loadInterviews = this.loadInterviews.bind(this);
-    this.loadInterviews();
   }
 
   componentDidMount() {
