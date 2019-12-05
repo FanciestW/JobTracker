@@ -35,6 +35,8 @@ class Navbar extends Component {
 
   async handleLogOut() {
     await Axios.post('/api/user/logout');
+    localStorage.setItem('authed', 'false');
+    window.location.reload();
   }
 
   render() {
@@ -136,7 +138,7 @@ class Navbar extends Component {
               <IconButton color="inherit" aria-label="profile">
                 <AccountCircleIcon />
               </IconButton>
-              <IconButton color="inherit" aria-label="settings">
+              <IconButton color="inherit" aria-label="settings" onClick={this.handleLogOut}>
                 <ExitToAppIcon />
               </IconButton>
             </div>

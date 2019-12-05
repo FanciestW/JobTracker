@@ -13,10 +13,9 @@ class Dashboard extends Component {
       interviews: [],
     };
     this.reloadDashboardData = this.reloadDashboardData.bind(this);
-    this.reloadDashboardData();
   }
 
-  componentnWillMount() {
+  componentWillMount() {
     this.reloadDashboardData();
   }
 
