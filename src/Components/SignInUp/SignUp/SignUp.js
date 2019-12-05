@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Paper, Button, Typography, Box, TextField } from '@material-ui/core';
+import { Paper, Button, Typography, Box, TextField, Snackbar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import EmailTextField from '../EmailTextField/EmailTextField';
 import PasswordTextField from '../PasswordTextField/PasswordTextField';
+import CustomSnackbar from '../../CustomSnackbar/CustomSnackbar';
 import '../SignInUp.scss';
 
 class SignUp extends Component {
@@ -21,6 +22,7 @@ class SignUp extends Component {
       passwordValid: false,
       passwordConfirmValue: '',
       passwordConfirmValid: false,
+      failSnackbarOpen: false,
     };
     this.handleFirstNameField = this.handleFirstNameField.bind(this);
     this.handleLastNameField = this.handleLastNameField.bind(this);
@@ -53,28 +55,34 @@ class SignUp extends Component {
   }
 
   async handleSignUp() {
-    if (!this.state.firstNameValid ||
-        !this.state.lastNameValid ||
-        !this.state.emailValid ||
-        !this.state.passwordValid ||
-        !this.state.passwordConfirmValid) {
-      return;
-    }
-    const reqBody = {
-      firstName: this.state.firstNameValue,
-      lastName: this.state.lastNameValue,
-      email: this.state.emailValue,
-      password: this.state.passwordValue,
-    };
-    const response = await Axios.post('/api/user/signup', reqBody);
-    console.log(response);
-    if (response.status === 200) { 
-      localStorage.setItem('authed', 'true');
-    } else {
-      localStorage.setItem('authed', 'false');
-    }
-    if (this.props.onAuthChange) {
-      this.props.onAuthChange(response.status === 200);
+    try {
+      if (!this.state.firstNameValid ||
+          !this.state.lastNameValid ||
+          !this.state.emailValid ||
+          !this.state.passwordValid ||
+          !this.state.passwordConfirmValid) {
+        return;
+      }
+      const reqBody = {
+        firstName: this.state.firstNameValue,
+        lastName: this.state.lastNameValue,
+        email: this.state.emailValue,
+        password: this.state.passwordValue,
+      };
+      const response = await Axios.post('/api/user/signup', reqBody);
+      console.log(response);
+      if (response.status === 200) { 
+        localStorage.setItem('authed', 'true');
+      } else {
+        localStorage.setItem('authed', 'false');
+        this.setState({ failSnackbarOpen: true, });
+      }
+      if (this.props.onAuthChange) {
+        this.props.onAuthChange(response.status === 200);
+      }
+    } catch (err) {
+      console.log(err);
+      this.setState({ failSnackbarOpen: true, });
     }
   }
 
@@ -122,6 +130,19 @@ class SignUp extends Component {
             </Box>
           </Typography>
         </Paper>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.failSnackbarOpen}
+          autoHideDuration={6000}
+          onClose={() => this.setState({ failSnackbarOpen: false })} >
+          <CustomSnackbar
+            onClose={() => this.setState({ failSnackbarOpen: false })}
+            variant="error"
+            message="Unable to sign up at this time." />
+        </Snackbar>
       </div>
     );
   }
