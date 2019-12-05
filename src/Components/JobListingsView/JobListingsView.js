@@ -33,17 +33,17 @@ class JobListingsView extends Component {
       </TableRow>
     ));
     return (
-      <div>
+      <div className="dashboard">
         <Grid container direction="column" spacing={2} style={{ height: '100%', width: '100%', margin: '0' }}>
           <Grid item xs>
             <Paper style={{ height: '100%', width: '100%', overflow: 'auto' }}>
               <Table style={{ minWidth: '100%' }}>
                 <TableHead>
                   <TableRow style={{ minWidth: '100%' }}>
-                    <TableCell>Job Title</TableCell>
-                    <TableCell align="right">Company</TableCell>
-                    <TableCell align="right">Location</TableCell>
-                    <TableCell align="right">Type</TableCell>
+                    <TableCell style={{fontWeight: 900}}>Job Title</TableCell>
+                    <TableCell align="right" style={{fontWeight: 900}}>Company</TableCell>
+                    <TableCell align="right" style={{fontWeight: 900}}>Location</TableCell>
+                    <TableCell align="right" style={{fontWeight: 900}}>Type</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

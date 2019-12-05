@@ -32,8 +32,8 @@ class JobApplicationsView extends Component {
 
   render() {
     return (
-      <div>
-        <Grid container direction="column" spacing={2} style={{ height: '100%', width: '100%', margin: '0' }}>
+      <div className="dashboard">
+        <Grid container direction="column" spacing={2} style={{ height: '100%', margin: '0' }}>
           <Grid item xs>
             <Paper style={{ height: '100%', overflow: 'auto' }}>
               <JobApplicationList jobs={this.state.applications} divided />

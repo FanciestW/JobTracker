@@ -12,7 +12,7 @@ import './App.scss';
 
 let theme = createMuiTheme({
   palette: {
-    type: 'dark',
+    type: localStorage.getItem('theme') || 'dark',
   },
 });
 theme = responsiveFontSizes(theme);

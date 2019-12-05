@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { AppBar, List, Toolbar, Typography, IconButton, ListItem, ListItemIcon, ListItemText, SwipeableDrawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import AddIcon from '@material-ui/icons/Add';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -22,6 +22,7 @@ class Navbar extends Component {
       open: false,
     };
     this.handleToggleDrawer = this.handleToggleDrawer.bind(this);
+    this.handleThemeToggle = this.handleThemeToggle.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
@@ -31,6 +32,16 @@ class Navbar extends Component {
     } else {
       this.setState({ open: true });
     }
+  }
+
+  handleThemeToggle() {
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+    window.location.reload();
   }
 
   async handleLogOut() {
@@ -129,8 +140,8 @@ class Navbar extends Component {
               {sideNav}
             </SwipeableDrawer>
             <div className="right">
-              <IconButton color="inherit" aria-label="add">
-                <AddIcon />
+              <IconButton color="inherit" aria-label="add" onClick={this.handleThemeToggle}>
+                <Brightness4Icon />
               </IconButton>
               <IconButton color="inherit" aria-label="Notifications">
                 <NotificationsIcon />
