@@ -47,7 +47,7 @@ PasswordTextField.propTypes = {
   onChange: PropTypes.func,
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  regex: PropTypes.string,
+  regex: PropTypes.instanceOf(RegExp),
   showError: PropTypes.bool,
   match: PropTypes.string,
 };
@@ -55,7 +55,7 @@ PasswordTextField.propTypes = {
 PasswordTextField.defaultProps = {
   label: 'Password',
   placeholder: undefined,
-  regex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})',
+  regex: /^.*(?=.{8,})((?=.*[!?@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/g,
   showError: false,
 };
 
