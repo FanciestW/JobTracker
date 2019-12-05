@@ -32,7 +32,7 @@ class JobApplicationsView extends Component {
 
   render() {
     return (
-      <div className="dashboard">
+      <div>
         <Grid container direction="column" spacing={2} style={{ height: '100%', width: '100%', margin: '0' }}>
           <Grid item xs>
             <Paper style={{ height: '100%', overflow: 'auto' }}>
