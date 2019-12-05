@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Axios from 'axios';
 import { AppBar, List, Toolbar, Typography, IconButton, ListItem, ListItemIcon, ListItemText, SwipeableDrawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddIcon from '@material-ui/icons/Add';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import SettingsIcon from '@material-ui/icons/Settings';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PeopleIcon from '@material-ui/icons/People';
 import WorkIcon from '@material-ui/icons/Work';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import './Navbar.scss';
@@ -21,6 +22,7 @@ class Navbar extends Component {
       open: false,
     };
     this.handleToggleDrawer = this.handleToggleDrawer.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   handleToggleDrawer() {
@@ -29,6 +31,10 @@ class Navbar extends Component {
     } else {
       this.setState({ open: true });
     }
+  }
+
+  async handleLogOut() {
+    await Axios.post('/api/user/logout');
   }
 
   render() {
@@ -131,7 +137,7 @@ class Navbar extends Component {
                 <AccountCircleIcon />
               </IconButton>
               <IconButton color="inherit" aria-label="settings">
-                <SettingsIcon />
+                <ExitToAppIcon />
               </IconButton>
             </div>
           </Toolbar>
